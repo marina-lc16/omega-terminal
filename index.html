@@ -111,14 +111,14 @@ function verifyCode() {
   if (input === '0790' || input === '790') {
     res.style.display = 'block';
     res.className = 'success';
-    res.innerHTML = '✔ ACCÉS AUTORITZAT<br><br>' +
-                    '<strong>UBICACIÓ DE L\'ULTIMA MISSIÓ:</strong><br>' +
-                    'Al pis d\'entremig.<br><br>' +
-                    '<strong>MISSIÓ FINAL:</strong> Finalitza la missió per completar la línia temporal del Projecte Origen.';
+    res.innerHTML = "ACCES AUTORITZAT<br><br>" +
+                    "UBICACIO DE L'ULTIMA MISSIO:<br>" +
+                    "Al pis d'entremig.<br><br>" +
+                    "MISSIO FINAL: Finalitza la missio per completar la linia temporal.";
   } else {
     res.style.display = 'block';
     res.className = 'error';
-    res.innerHTML = '✖ CODI INCORRECTE<br>Revisa les dates registrades als Arxius Classificats 01, 02 i 03 del Dossier.';
+    res.innerHTML = "CODI INCORRECTE<br>Revisa les dates registrades al Dossier.";
   }
 }
 </script>
