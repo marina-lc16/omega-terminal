@@ -3,109 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OMEGA // TERMINAL</title>
+<title>TERMINAL OMEGA // PROJECTE ORIGEN</title>
 <style>
-  *{box-sizing:border-box}
-  html,body{margin:0;min-height:100%;background:#050708;color:#d8e6df;font-family:Consolas,"Courier New",monospace}
-  body{display:flex;align-items:center;justify-content:center;overflow:hidden}
-  body:before{content:"";position:fixed;inset:0;pointer-events:none;
-    background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0,rgba(255,255,255,.025) 1px,transparent 1px,transparent 4px)}
-  .noise{position:fixed;inset:0;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E")}
-  .terminal{width:min(820px,92vw);border:1px solid #29443b;background:rgba(7,12,11,.96);box-shadow:0 0 50px rgba(0,0,0,.75),0 0 18px rgba(75,180,130,.08);padding:0}
-  header{border-bottom:1px solid #29443b;padding:18px 22px;display:flex;justify-content:space-between;gap:20px}
-  .brand{letter-spacing:4px;font-weight:bold}.classified{font-size:11px;letter-spacing:2px;opacity:.65}
-  main{padding:34px 30px 38px}
-  .stamp{display:inline-block;border:1px solid #6a887d;padding:5px 9px;font-size:10px;letter-spacing:2px;opacity:.8;margin-bottom:22px}
-  h1{font-size:clamp(28px,6vw,54px);margin:0 0 8px;letter-spacing:8px}
-  .sub{color:#7ea99a;letter-spacing:2px;font-size:13px;margin-bottom:35px}
-  .line{height:1px;background:#29443b;margin:20px 0 28px}
-  label{display:block;font-size:12px;letter-spacing:2px;margin-bottom:12px;color:#86aa9e}
-  input{width:100%;max-width:360px;background:#020504;border:1px solid #426257;color:#e8fff6;padding:15px 16px;font:24px Consolas,monospace;letter-spacing:10px;outline:none;text-align:center}
-  input:focus{border-color:#8dbbad;box-shadow:0 0 12px rgba(110,190,160,.12)}
-  button{display:block;margin-top:15px;background:#d8e6df;color:#06100c;border:0;padding:13px 22px;font:700 12px Consolas,monospace;letter-spacing:2px;cursor:pointer}
-  button:hover{filter:brightness(1.08)}
-  .status{min-height:24px;margin-top:18px;font-size:12px;color:#b7c9c2}
-  .error{color:#d68c8c}.success{color:#9fd4b8}
-  #success{display:none}
-  .alert{border:1px solid #496d5e;padding:22px;margin-top:26px;background:rgba(22,45,37,.22)}
-  .ok{letter-spacing:3px;font-size:12px;color:#9fd4b8;margin-bottom:16px}
-  .location{font-size:18px;line-height:1.6;margin:16px 0;color:#eef8f4}
-  .placeholder{color:#8ba59c}
-  .blink{animation:blink 1s steps(2,end) infinite}
-  .footer{margin-top:30px;font-size:10px;opacity:.45;letter-spacing:1px}
-  @keyframes blink{50%{opacity:.35}}
-  @media(max-width:520px){main{padding:25px 20px 30px}header{padding:15px}.terminal{width:94vw}input{max-width:none}}
+  body {
+    background-color: #0d0d0d;
+    color: #00ff66;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .terminal {
+    background-color: #141414;
+    border: 2px solid #00ff66;
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
+  }
+  h1 {
+    font-size: 1.3rem;
+    text-align: center;
+    border-bottom: 1px solid #00ff66;
+    padding-bottom: 10px;
+    margin-top: 0;
+    letter-spacing: 2px;
+  }
+  p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #00cc52;
+  }
+  .input-group {
+    margin: 25px 0;
+    text-align: center;
+  }
+  input[type="text"] {
+    background-color: #050505;
+    border: 1px solid #00ff66;
+    color: #00ff66;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4rem;
+    padding: 10px;
+    width: 180px;
+    text-align: center;
+    letter-spacing: 4px;
+    outline: none;
+  }
+  button {
+    background-color: #00ff66;
+    color: #050505;
+    border: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 12px 24px;
+    margin-top: 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  button:hover {
+    background-color: #00cc52;
+  }
+  #result {
+    margin-top: 25px;
+    padding: 15px;
+    border: 1px dashed #00ff66;
+    display: none;
+    background-color: #081a0e;
+  }
+  .success {
+    color: #00ff66;
+  }
+  .error {
+    color: #ff3333;
+    border-color: #ff3333 !important;
+  }
 </style>
 </head>
 <body>
-<div class="noise"></div>
-<section class="terminal">
-  <header>
-    <div class="brand">OMEGA // TERMINAL</div>
-    <div class="classified">CLASSIFIED</div>
-  </header>
-  <main>
-    <div class="stamp">SECURITY NODE 03</div>
-    <h1>OMEGA</h1>
-    <div class="sub">PROTOCOL ACTIVATION SYSTEM</div>
-    <div class="line"></div>
 
-    <div id="login">
-      <label for="code">INTRODUEIX EL CODI D'ACTIVACIÓ</label>
-      <input id="code" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="••••" aria-label="Codi d'activació">
-      <button id="activate">AUTORITZAR ACCÉS</button>
-      <div id="status" class="status">ESPERANT CREDENCIALS<span class="blink">_</span></div>
-    </div>
+<div class="terminal">
+  <h1>[ TERMINAL OMEGA ]</h1>
+  <p>SISTEMA REQUEREIX VERIFICACIÓ TEMPORAL PER DESBLOQUEJAR ELS REGALS I EL SOBRE 03.</p>
+  <p><strong>Fórmula:</strong><br>(Dia Origen + Dia Llegat + Dia Connexió) × Mes Origen</p>
+  
+  <div class="input-group">
+    <input type="text" id="code" maxlength="4" placeholder="0000">
+    <br>
+    <button onclick="verifyCode()">ACTIVAR PROTOCOL</button>
+  </div>
 
-    <div id="success">
-      <div class="alert">
-        <div class="ok">✓ ACCESS GRANTED // PROTOCOL OMEGA ACTIVAT</div>
-        <div class="line"></div>
-        <div>INFORMACIÓ CLASSIFICADA RECUPERADA:</div>
-        <div class="location">
-          <strong>LOCALITZACIÓ D'OMEGA</strong><br>
-          <span class="placeholder">[UBICACIÓ PENDENT DE CONFIGURAR]</span>
-        </div>
-        <div>
-          El següent element de la missió es troba en aquesta localització.
-          Procedeix fins al punt indicat i recupera el contingut.
-        </div>
-      </div>
-    </div>
-
-    <div class="footer">OMEGA // NODE 03 // UNAUTHORIZED ACCESS WILL BE LOGGED</div>
-  </main>
-</section>
+  <div id="result"></div>
+</div>
 
 <script>
-const input = document.getElementById("code");
-const button = document.getElementById("activate");
-const status = document.getElementById("status");
-const login = document.getElementById("login");
-const success = document.getElementById("success");
-
-function activate(){
-  const value = input.value.trim();
-  if(value === "0790"){
-    status.textContent = "CREDENCIALS ACCEPTADES // DESCRIPTANT INFORMACIÓ...";
-    status.className = "status success";
-    button.disabled = true;
-    input.disabled = true;
-    setTimeout(() => {
-      login.style.display = "none";
-      success.style.display = "block";
-      window.scrollTo({top:0,behavior:"smooth"});
-    }, 900);
-  }else{
-    status.textContent = "✕ ACCÉS DENEGAT // CODI INCORRECTE";
-    status.className = "status error";
-    input.value = "";
-    input.focus();
+function verifyCode() {
+  const input = document.getElementById('code').value.trim();
+  const res = document.getElementById('result');
+  
+  if (input === '0790' || input === '790') {
+    res.style.display = 'block';
+    res.className = 'success';
+    res.innerHTML = '✔ ACCÉS AUTORITZAT<br><br>' +
+                    '<strong>UBICACIÓ DELS REGALS:</strong><br>' +
+                    'Al pis d\'entremig, on hi pots anar a desconnectar.<br><br>' +
+                    '<strong>MISSIÓ FINAL:</strong> Obre el Sobre 03 i munta el puzle per completar la línia temporal del Projecte Origen.';
+  } else {
+    res.style.display = 'block';
+    res.className = 'error';
+    res.innerHTML = '✖ CODI INCORRECTE<br>Revisa les dates registrades als Arxius Classificats 01, 02 i 03 del Dossier.';
   }
 }
-button.addEventListener("click", activate);
-input.addEventListener("keydown", e => { if(e.key === "Enter") activate(); });
-input.addEventListener("input", () => { input.value = input.value.replace(/\D/g,""); });
 </script>
+
 </body>
 </html>
